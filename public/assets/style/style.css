@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;600&display=swap");
+@font-face {
+  font-family: "SPACE ARMOR";
+  src: url(./fonts/spacearmor.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Cyberway Riders";
+  src: url(./fonts/cyberware.woff2) format("woff2");
+}
+body {
+  background-color: #010101;
+}
+
+header {
+  display: flex;
+  padding-top: 55px;
+  padding-left: 40px;
+  padding-bottom: 34px;
+}
+header .logo {
+  color: #C91800;
+  display: inline-flex;
+}
+header .logo-name {
+  font-family: "Cyberway Riders";
+  font-size: 64px;
+  border-right: 4px solid aliceblue;
+  padding-right: 18px;
+}
+header .logo-year {
+  font-family: "SPACE ARMOR";
+  font-size: 44px;
+  padding-left: 12px;
+  padding-top: 14px;
+}
+header .slogan {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 28px;
+  color: aliceblue;
+}
+
+.video-intro {
+  -o-object-fit: initial;
+     object-fit: initial;
+  width: 100%;
+  height: 74%;
+  border-radius: 20px;
+}
+
+.vertical-nav {
+  padding-left: 40px;
+  position: absolute;
+}/*# sourceMappingURL=style.css.map */
