@@ -20,6 +20,10 @@ body{
     overflow-x: hidden;
 }
 
+html{
+  scroll-behavior: smooth;
+
+}
 p{
     font-family: 'Hind Madurai', sans-serif;
     color: floralwhite;
@@ -28,10 +32,11 @@ p{
 .billboard{
         
         padding: 55px 0 34px 40px;
+        text-align: center;
 
 
         .logo{
-            color: #C91800;
+            color: #c917009c;
             display: inline-flex
         }
 
@@ -61,102 +66,98 @@ p{
 .video-intro{
     object-fit: cover;
     width: 100%;
-    height: 75%;
-    border-radius: 20px;
+    height: 78%;
 }
-
 
 
 main{
-    margin-top: 50%;
-    padding-left: 40px;
+    width: 300px;
+    margin-top: 25%;
+    margin-bottom: 7%;
 
-    nav{
-        width: 18%;
-        position: absolute;
-        margin-top: -15%;
-        border-right: 3px solid aliceblue;
-        padding-right: 20px;
-        padding-bottom: 30px;
-        border-radius: 8px;
+        
+        h2{
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 30px;
+            color: aliceblue;
+        }
+
+        h3{
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 27px;
+            color: aliceblue;
+        }
+
+
+    
+
+    $finalHeight: 1000px;
+    $finalWidth: 200px;
+    $scrollBarHeight: 1px;
+    
+    ::-webkit-scrollbar {
+      width: $scrollBarHeight;
+      height: $scrollBarHeight;
+    }
+    
+    ::-webkit-scrollbar-button {
+      width: $scrollBarHeight;
+      height: $scrollBarHeight;
+    }
+    
+    
+    div {
+      box-sizing: border-box;
     }
 
-    nav li{
-        font: 100%;
-        padding: 22px 0 22px 0;
-        
-        color: aliceblue;
-        border-bottom: 1px solid aliceblue;
-        font-size: 30px;
-        font-family: 'Rajdhani', sans-serif;
+
+    .horizontal-scroll-wrapper {
+      display: block;
+      top: 0;
+      left: 0;
+      width: calc(#{$finalHeight} + #{$scrollBarHeight});
+      max-height: $finalHeight;
+      margin: 0;
+      padding-top: $scrollBarHeight;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transform: rotate(-90deg) translateY(-$finalHeight);
+      transform-origin: right top;
+      & > div {
+        display: block;
+        padding-left: 40px;
+        padding-top: 25px;
+        padding-bottom: 40px;
+        transform: rotate(90deg);
+        transform-origin: right top;
+      }
+    }
+
+    
+    .squares {
+      scroll-snap-type: mandatory;
+        margin-left: 180%;
+      padding: $finalHeight 0 0 0;
+      & > div {
+        width: $finalHeight;
+        height: $finalHeight;
+        margin: 10px 0;
+      }
     }
 
     .synopsis{
-        border: 1px solid red;
-        margin-left: 30%;
-        background-color: #C91800 46%;
-        width: 100%;
-        background: #C91800 47%;
-        padding: 8px 12px;
-        border-bottom-left-radius: 8px;
-        border-top-left-radius: 8px;
-    }
+      background-color: #c91700a4;
 
-    h2{
-        font-family: 'Chakra Petch', sans-serif;
-        font-size: 30px;
-        font: 100%;
-        color: aliceblue;
-        font-size: 30px;
-        font-weight: 600;
+      p{
+        margin-top: 50px;
+        width: 60%;
+      }
+
+      img{
+        object-fit: cover;
+        width: 80%;
         
+      }
     }
-
-    h3{
-        color: aliceblue;
-        font-size: 27px;
-    }
-
-    p{
-        text-align: center;
-        padding-top: 28px;
-        width: 96%;
-    }
-}
-
-.outer {
-    width: auto;
-    height: 900px;
-    white-space: nowrap;
-    position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
-    margin-left: 30%;
-    ::-webkit-scrollbar {
-        display: none;
-    }
-    
-
 
 }
-
-.outer div {
-    width: 100%;
-    height: 20%;
-    background-color: #eee;
-    float: none;
-    height: 90%;
-    margin: 0 0.25%;
-    display: inline-block;
-    zoom: 1;
-}
-
-.disable-scrollbars {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
-  
-    &::-webkit-scrollbar {
-      background: transparent; /* Chrome/Safari/Webkit */
-      width: 0px;
-    }
-  }
