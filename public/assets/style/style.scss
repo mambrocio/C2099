@@ -44,7 +44,7 @@ p, li{
         background-position: center;
 
         --mask: linear-gradient(to bottom, 
-      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 88%, 
+      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 98%, 
       rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
   ) 50% 10% / 100% 100% repeat-x;
   
@@ -61,7 +61,7 @@ p, li{
 
         .logo-name{
             font-family: 'Cyberway Riders';
-            font-size: 40px;
+            font-size: 50px;
             border-right: 4px solid aliceblue;
             padding-right: 18px;
             
@@ -69,7 +69,7 @@ p, li{
 
         .logo-year{
             font-family: 'SPACE ARMOR';
-            font-size: 38px;
+            font-size: 37px;
             padding-left: 12px;
 
 
@@ -88,9 +88,9 @@ p, li{
     background-size: cover;
 
     --mask: linear-gradient(to top, 
-  rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 12%, 
-  rgba(0,0,0, 0) 98%, rgba(0,0,0, 0) 0
-) 100% 50% / 100% 100% repeat-x;
+  rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 2%, 
+  rgba(0,0,0, 0) 100%, rgba(0,0,0, 0) 0
+) 40% 50% / 100% 100% repeat-x;
 
 font: 2em/1.6em Arial;
 -webkit-mask: var(--mask); 
