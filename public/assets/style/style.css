@@ -16,9 +16,15 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overflow: scroll;
 }
 
-p {
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+p, li {
   font-family: "Hind Madurai", sans-serif;
   color: floralwhite;
 }
@@ -26,30 +32,49 @@ p {
 .billboard {
   padding: 55px 0 34px 40px;
   text-align: center;
+  background-image: url();
+  background-size: cover;
+  background-position: center;
+  --mask: linear-gradient(to bottom,
+      rgba(0,0,0, 1) 0, rgba(0,0,0, 1) 88%,
+      rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
+  ) 50% 10% / 100% 100% repeat-x;
+  font: 2em/1.6em Arial;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
 .billboard .logo {
-  color: rgba(201, 23, 0, 0.6117647059);
+  color: rgba(201, 23, 0, 0.9450980392);
   display: inline-flex;
 }
 .billboard .logo-name {
   font-family: "Cyberway Riders";
-  font-size: 64px;
+  font-size: 40px;
   border-right: 4px solid aliceblue;
   padding-right: 18px;
 }
 .billboard .logo-year {
   font-family: "SPACE ARMOR";
-  font-size: 44px;
+  font-size: 38px;
   padding-left: 12px;
-  padding-top: 14px;
 }
 .billboard h1 {
   font-family: "Chakra Petch", sans-serif;
-  font-size: 33px;
+  font-size: 24px;
   color: aliceblue;
 }
 
 .video-intro {
+  text-align: center;
+  background-image: url(../images/abstract-7403456.svg);
+  background-size: cover;
+  --mask: linear-gradient(to top,
+    rgba(0,0,0, 1) 0, rgba(0,0,0, 1) 12%,
+    rgba(0,0,0, 0) 98%, rgba(0,0,0, 0) 0
+  ) 100% 50% / 100% 100% repeat-x;
+  font: 2em/1.6em Arial;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
@@ -57,13 +82,11 @@ p {
 }
 
 main {
-  width: 300px;
   margin-top: 25%;
-  margin-bottom: 7%;
 }
 main h2 {
   font-family: "Chakra Petch", sans-serif;
-  font-size: 30px;
+  font-size: 37px;
   color: aliceblue;
 }
 main h3 {
@@ -71,57 +94,84 @@ main h3 {
   font-size: 27px;
   color: aliceblue;
 }
-main ::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
+main .main-contents {
+  display: flex;
 }
-main ::-webkit-scrollbar-button {
-  width: 1px;
-  height: 1px;
-}
-main div {
-  box-sizing: border-box;
-}
-main .horizontal-scroll-wrapper {
-  display: block;
-  top: 0;
-  left: 0;
-  width: calc(1000px + 1px);
-  max-height: 1000px;
-  margin: 0;
-  padding-top: 1px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg) translateY(-1000px);
-  transform-origin: right top;
-}
-main .horizontal-scroll-wrapper > div {
-  display: block;
+main nav {
   padding-left: 40px;
-  padding-top: 25px;
-  padding-bottom: 40px;
-  transform: rotate(90deg);
-  transform-origin: right top;
+  margin-top: 40px;
+  border-right: 3px double aliceblue;
 }
-main .squares {
-  scroll-snap-type: mandatory;
-  margin-left: 180%;
-  padding: 1000px 0 0 0;
+main nav li {
+  margin: 25px 0 0 0;
+  font-size: 22px;
+  padding: 20px;
+  list-style-type: none;
+  border-bottom: 1px solid aliceblue;
+  text-transform: uppercase;
 }
-main .squares > div {
-  width: 1000px;
-  height: 1000px;
-  margin: 10px 0;
-}
-main .synopsis {
-  background-color: rgba(201, 23, 0, 0.6431372549);
-}
-main .synopsis p {
-  margin-top: 50px;
-  width: 60%;
-}
-main .synopsis img {
-  -o-object-fit: cover;
-     object-fit: cover;
+main .content {
+  margin-left: 300px;
   width: 80%;
+  display: block;
+  overflow-y: scroll;
+  height: 950px;
+}
+main .content div {
+  scroll-snap-type: y mandatory;
+}
+main .content .synopsis {
+  /* From https://css.glass */
+  border-radius: 4px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 40px;
+}
+main .content .synopsis p {
+  text-align: right;
+  font-weight: 300;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1750px);
+  }
+}
+main .content .synopsis .synopsis-bg .slider {
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+  border-radius: 2px;
+}
+main .content .synopsis .synopsis-bg .slider::before, main .content .synopsis .synopsis-bg .slider::after {
+  background: linear-gradient(to right, rgb(2, 2, 2) 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 400px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+main .content .synopsis .synopsis-bg .slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+main .content .synopsis .synopsis-bg .slider::before {
+  left: 0;
+  top: 0;
+}
+main .content .synopsis .synopsis-bg .slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: 6300px;
+}
+main .content .synopsis .synopsis-bg .slider .slide {
+  height: 200px;
+  width: 250px;
 }/*# sourceMappingURL=style.css.map */

@@ -22,9 +22,15 @@ body{
 
 html{
   scroll-behavior: smooth;
-
+  overflow: scroll;
 }
-p{
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+    }
+    
+p, li{
     font-family: 'Hind Madurai', sans-serif;
     color: floralwhite;
 }
@@ -33,16 +39,29 @@ p{
         
         padding: 55px 0 34px 40px;
         text-align: center;
+        background-image: url();
+        background-size: cover;
+        background-position: center;
+
+        --mask: linear-gradient(to bottom, 
+      rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 88%, 
+      rgba(0,0,0, 0) 95%, rgba(0,0,0, 0) 0
+  ) 50% 10% / 100% 100% repeat-x;
+  
+  font: 2em/1.6em Arial;
+  -webkit-mask: var(--mask); 
+  mask: var(--mask);
 
 
         .logo{
-            color: #c917009c;
-            display: inline-flex
+            color: #c91700f1;
+            display: inline-flex;
+            
         }
 
         .logo-name{
             font-family: 'Cyberway Riders';
-            font-size: 64px;
+            font-size: 40px;
             border-right: 4px solid aliceblue;
             padding-right: 18px;
             
@@ -50,20 +69,32 @@ p{
 
         .logo-year{
             font-family: 'SPACE ARMOR';
-            font-size: 44px;
+            font-size: 38px;
             padding-left: 12px;
-            padding-top: 14px;
+
 
         }
 
         h1{
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 33px;
+            font-size: 24px;
             color: aliceblue;
         }
 }
 
 .video-intro{
+    text-align: center;
+    background-image: url(../images/abstract-7403456.svg);
+    background-size: cover;
+
+    --mask: linear-gradient(to top, 
+  rgba(0,0,0, 1) 0,   rgba(0,0,0, 1) 12%, 
+  rgba(0,0,0, 0) 98%, rgba(0,0,0, 0) 0
+) 100% 50% / 100% 100% repeat-x;
+
+font: 2em/1.6em Arial;
+-webkit-mask: var(--mask); 
+mask: var(--mask);
     object-fit: cover;
     width: 100%;
     height: 78%;
@@ -71,14 +102,12 @@ p{
 
 
 main{
-    width: 300px;
     margin-top: 25%;
-    margin-bottom: 7%;
 
         
         h2{
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 30px;
+            font-size: 37px;
             color: aliceblue;
         }
 
@@ -88,76 +117,170 @@ main{
             color: aliceblue;
         }
 
+        .main-contents{
+            display: flex;
+        }
 
+        nav{
+            padding-left: 40px;
+            margin-top: 40px;
+            border-right: 3px double aliceblue;
+
+            li{
+                margin: 25px 0 0 0;
+                font-size: 22px;
+                padding: 20px;
+                list-style-type: none;
+                border-bottom: 1px solid aliceblue;
+                text-transform: uppercase;
+            }
+        }
+
+        .content{
+           margin-left: 300px;
+           width: 80%;
+           display: block;
+           overflow-y: scroll; 
+           height:950px;
     
+           div{
+            scroll-snap-type: y mandatory;
+           }
 
-    $finalHeight: 1000px;
-    $finalWidth: 200px;
-    $scrollBarHeight: 1px;
-    
-    ::-webkit-scrollbar {
-      width: $scrollBarHeight;
-      height: $scrollBarHeight;
-    }
-    
-    ::-webkit-scrollbar-button {
-      width: $scrollBarHeight;
-      height: $scrollBarHeight;
-    }
-    
-    
-    div {
-      box-sizing: border-box;
-    }
-
-
-    .horizontal-scroll-wrapper {
-      display: block;
-      top: 0;
-      left: 0;
-      width: calc(#{$finalHeight} + #{$scrollBarHeight});
-      max-height: $finalHeight;
-      margin: 0;
-      padding-top: $scrollBarHeight;
-      overflow-y: auto;
-      overflow-x: hidden;
-      transform: rotate(-90deg) translateY(-$finalHeight);
-      transform-origin: right top;
-      & > div {
-        display: block;
-        padding-left: 40px;
-        padding-top: 25px;
-        padding-bottom: 40px;
-        transform: rotate(90deg);
-        transform-origin: right top;
-      }
-    }
-
-    
-    .squares {
-      scroll-snap-type: mandatory;
-        margin-left: 180%;
-      padding: $finalHeight 0 0 0;
-      & > div {
-        width: $finalHeight;
-        height: $finalHeight;
-        margin: 10px 0;
-      }
-    }
-
-    .synopsis{
-      background-color: #c91700a4;
-
-      p{
-        margin-top: 50px;
-        width: 60%;
-      }
-
-      img{
-        object-fit: cover;
-        width: 80%;
         
-      }
-    }
+            .synopsis{
+               /* From https://css.glass */
 
+            border-radius: 4px;
+             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+
+                padding: 40px;
+                
+                p{
+                    text-align: right;
+                    font-weight: 300;
+                    
+                }
+                .synopsis-bg{
+
+                    @mixin white-gradient {
+                        background: linear-gradient(to right,  rgb(2, 2, 2) 0%,rgba(255,255,255,0) 100%);
+                    }
+                    
+                    $animationSpeed: 40s;
+                    
+                    // Animation
+                    @keyframes scroll {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(calc(-250px * 7))}
+                    }
+                    
+                    
+                    // Styling
+                    .slider {
+                       
+                        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+                        height: 400px;
+                        margin: auto;
+                        overflow:hidden;
+                        position: relative;
+                        width: 960px;
+                        border-radius: 2px;
+
+                        
+                        &::before,
+                        &::after {
+                            @include white-gradient;
+                            content: "";
+                            height: 400px;
+                            position: absolute;
+                            width: 200px;
+                            z-index: 2;
+                        }
+                        
+                        &::after {
+                            right: 0;
+                            top: 0;
+                            transform: rotateZ(180deg);
+                        }
+                    
+                        &::before {
+                            left: 0;
+                            top: 0;
+                        }
+                        
+                        .slide-track {
+                            animation: scroll $animationSpeed linear infinite;
+                            display: flex;
+                            width: calc(350px * 18);
+                        }
+                        
+                        .slide {
+                            height: 200px;
+                            width: 250px;
+                        }
+                    }
+                }
+                    
+                    
 }
+        }
+    }
+    //
+    //  $finalHeight: 500px;
+    // $finalWidth: 500px;
+    // $scrollBarHeight: 0.5px;
+    
+    // ::-webkit-scrollbar {
+    //   width: $scrollBarHeight;
+    //   height: $scrollBarHeight;
+    // }
+    
+    // ::-webkit-scrollbar-button {
+    //   width: $scrollBarHeight;
+    //   height: $scrollBarHeight;
+    // }
+    
+    
+    // div {
+    //   box-sizing: border-box;
+    // }
+
+
+    // .horizontal-scroll-wrapper {
+    //   display: block;
+    //   top: 0;
+    //   left: 0;
+    //   width: calc(#{$finalHeight} + #{$scrollBarHeight});
+    //   max-height: $finalHeight;
+    //   margin: 0;
+    //   padding-top: $scrollBarHeight;
+    //   overflow-y: auto;
+    //   overflow-x: hidden;
+    //   transform: rotate(-90deg) translateY(-$finalHeight);
+    //   transform-origin: right top;
+    //   background-color: #c917009c;
+    //   & > div {
+    //     display: block;
+    //     padding-left: 40px;
+    //     padding-top: 25px;
+    //     padding-bottom: 40px;
+    //     transform: rotate(90deg);
+    //     transform-origin: right top;
+    //   }
+    // }
+
+    
+    // .squares {
+    //     margin-left: 180%;
+    //   padding: $finalHeight 0 0 0;
+    //   & > div {
+    //     width: $finalHeight;
+    //     height: $finalHeight;
+    //     margin: 10px 0;
+    //   }
+    // }s
+    // }
